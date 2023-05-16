@@ -2,24 +2,28 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Project {
+  id: String!
+  name: String!
+  code: Int!
+  employees: [Employee!]
+}
+
 type Employee {
   id: String!
   firstName: String!
   lastName: String!
   designation: String!
   city: String
-}
-
-type Project {
-  id: String!
-  name: String!
-  code: Int!
+  project: Project!
+  projectId: String!
 }
 
 type Query {
   getAllEmployees: [Employee!]!
+  getEmployeeByID(id: String!): Employee!
   getAllProject: [Project!]!
-  project(id: String!): Project!
+  getProjectById(id: String!): Project!
 }
 
 type Mutation {
@@ -34,6 +38,7 @@ input EmployeeCreateDTO {
   lastName: String!
   designation: String!
   city: String
+  projectId: String!
 }
 
 input CreateProjectInput {

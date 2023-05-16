@@ -3,4 +3,5 @@ export declare class EmployeeCreateDTO {
     lastName: string;
     designation: string;
     city: string;
+    projectId: string;
 }

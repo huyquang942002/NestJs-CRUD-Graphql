@@ -52,7 +52,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProjectResolver.prototype, "findAll", null);
 __decorate([
-    (0, graphql_1.Query)(() => project_entity_1.Project, { name: 'project' }),
+    (0, graphql_1.Query)(() => project_entity_1.Project, { name: 'getProjectById' }),
     __param(0, (0, graphql_1.Args)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

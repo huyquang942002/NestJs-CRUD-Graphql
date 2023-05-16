@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Project = void 0;
 const graphql_1 = require("@nestjs/graphql");
+const employee_entity_1 = require("../../employee/entities/employee.entity");
 const typeorm_1 = require("typeorm");
 let Project = class Project {
 };
@@ -29,6 +30,11 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], Project.prototype, "code", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => [employee_entity_1.Employee], { nullable: true }),
+    (0, typeorm_1.OneToMany)(() => employee_entity_1.Employee, (employee) => employee.project),
+    __metadata("design:type", Array)
+], Project.prototype, "employees", void 0);
 Project = __decorate([
     (0, graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)()

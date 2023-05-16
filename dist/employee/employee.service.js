@@ -17,22 +17,31 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const employee_entity_1 = require("./entities/employee.entity");
 const typeorm_2 = require("typeorm");
+const project_service_1 = require("../project/project.service");
 let EmployeeService = class EmployeeService {
-    constructor(employeeRepository) {
+    constructor(employeeRepository, projectService) {
         this.employeeRepository = employeeRepository;
+        this.projectService = projectService;
     }
     async findAll() {
         return this.employeeRepository.find();
+    }
+    async findOne(id) {
+        return this.employeeRepository.findOne({ where: { id } });
     }
     async create(employee) {
         let emp = this.employeeRepository.create(employee);
         return this.employeeRepository.save(emp);
     }
+    async getProject(id) {
+        return this, this.projectService.findOne(id);
+    }
 };
 EmployeeService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(employee_entity_1.Employee)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        project_service_1.ProjectService])
 ], EmployeeService);
 exports.EmployeeService = EmployeeService;
 //# sourceMappingURL=employee.service.js.map

@@ -18,6 +18,7 @@ ProjectModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([project_entity_1.Project])],
         providers: [project_resolver_1.ProjectResolver, project_service_1.ProjectService],
+        exports: [project_service_1.ProjectService],
     })
 ], ProjectModule);
 exports.ProjectModule = ProjectModule;

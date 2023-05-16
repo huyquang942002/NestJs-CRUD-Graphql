@@ -17,6 +17,7 @@ const graphql_1 = require("@nestjs/graphql");
 const employee_entity_1 = require("./entities/employee.entity");
 const employee_service_1 = require("./employee.service");
 const create_employee_input_1 = require("./dto/create-employee.input");
+const project_entity_1 = require("../project/entities/project.entity");
 let EmployeeResolver = class EmployeeResolver {
     constructor(employeeService) {
         this.employeeService = employeeService;
@@ -26,6 +27,12 @@ let EmployeeResolver = class EmployeeResolver {
     }
     create(employee) {
         return this.employeeService.create(employee);
+    }
+    findOne(id) {
+        return this.employeeService.findOne(id);
+    }
+    project(employee) {
+        return this.employeeService.getProject(employee.projectId);
     }
 };
 __decorate([
@@ -41,6 +48,20 @@ __decorate([
     __metadata("design:paramtypes", [create_employee_input_1.EmployeeCreateDTO]),
     __metadata("design:returntype", void 0)
 ], EmployeeResolver.prototype, "create", null);
+__decorate([
+    (0, graphql_1.Query)(() => employee_entity_1.Employee, { name: 'getEmployeeByID' }),
+    __param(0, (0, graphql_1.Args)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], EmployeeResolver.prototype, "findOne", null);
+__decorate([
+    (0, graphql_1.ResolveField)(() => project_entity_1.Project),
+    __param(0, (0, graphql_1.Parent)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [employee_entity_1.Employee]),
+    __metadata("design:returntype", void 0)
+], EmployeeResolver.prototype, "project", null);
 EmployeeResolver = __decorate([
     (0, graphql_1.Resolver)(() => employee_entity_1.Employee),
     __metadata("design:paramtypes", [employee_service_1.EmployeeService])

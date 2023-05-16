@@ -26,7 +26,7 @@ let ProjectService = class ProjectService {
         return this.projectService.save(proj);
     }
     async findAll() {
-        return this.projectService.find();
+        return this.projectService.find({ relations: ['employees'] });
     }
     async findOne(id) {
         return await this.projectService.findOne({ where: { id } });

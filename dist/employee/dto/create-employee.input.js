@@ -29,6 +29,10 @@ __decorate([
     (0, graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], EmployeeCreateDTO.prototype, "city", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], EmployeeCreateDTO.prototype, "projectId", void 0);
 EmployeeCreateDTO = __decorate([
     (0, graphql_1.InputType)()
 ], EmployeeCreateDTO);

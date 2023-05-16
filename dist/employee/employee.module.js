@@ -12,11 +12,12 @@ const employee_service_1 = require("./employee.service");
 const employee_resolver_1 = require("./employee.resolver");
 const typeorm_1 = require("@nestjs/typeorm");
 const employee_entity_1 = require("./entities/employee.entity");
+const project_module_1 = require("../project/project.module");
 let EmployeeModule = class EmployeeModule {
 };
 EmployeeModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([employee_entity_1.Employee])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([employee_entity_1.Employee]), project_module_1.ProjectModule],
         providers: [employee_resolver_1.EmployeeResolver, employee_service_1.EmployeeService],
     })
 ], EmployeeModule);
